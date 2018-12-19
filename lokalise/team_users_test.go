@@ -6,7 +6,7 @@ import (
 	"testing"
 
 	"github.com/17media/go-lokalise-api/lokalise"
-	"github.com/lokalise/go-lokalise-api/model"
+	"github.com/17media/go-lokalise-api/model"
 	"github.com/stretchr/testify/assert"
 )
 
