@@ -12,7 +12,7 @@ import (
 	"github.com/17media/go-lokalise-api/model"
 )
 
-func TestGetKeys(t *testing.T) {
+func TestListKeys(t *testing.T) {
 	flag.Parse()
 	if token == "" {
 		t.Errorf("set token flag to run integration tests")
