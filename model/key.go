@@ -24,7 +24,7 @@ type Key struct {
 	IsArchived       bool            `json:"is_archived,omitempty"`
 	Context          string          `json:"context,omitempty"`
 	CharLimit        int             `json:"char_limit,omitempty"`
-	CustomAttributes []interface{}   `json:"custom_attributes,omitempty"`
+	CustomAttributes string          `json:"custom_attributes,omitempty"`
 }
 
 // ErrorKey is key info from error for key create/update API
