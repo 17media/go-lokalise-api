@@ -57,5 +57,9 @@ func (c *TranslationsService) Update(ctx context.Context, projectID string, tran
 	if err != nil {
 		return model.TranslationResponse{}, err
 	}
+
+	if getErrorStatusCode(resp) == int(423) {
+		return res, ErrTokenIsProcessed
+	}
 	return res, apiError(resp)
 }
