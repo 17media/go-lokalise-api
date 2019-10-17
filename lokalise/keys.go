@@ -69,6 +69,10 @@ func (c *KeysService) List(ctx context.Context, projectID string, options ListKe
 		return model.KeysResponse{}, err
 	}
 	applyPaged(resp, &res.Paged)
+
+	if getErrorStatusCode(resp) == int(423) {
+		return res, ErrTokenIsProcessed
+	}
 	return res, apiError(resp)
 }
 
