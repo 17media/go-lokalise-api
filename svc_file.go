@@ -2,9 +2,9 @@ package lokalise
 
 import (
 	"fmt"
-	"github.com/google/go-querystring/query"
 
-	"github.com/go-resty/resty/v2"
+	"github.com/google/go-querystring/query"
+	"gopkg.in/go-resty/resty.v2"
 )
 
 const (

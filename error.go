@@ -4,7 +4,12 @@ import (
 	"errors"
 	"fmt"
 
-	"github.com/go-resty/resty/v2"
+	"gopkg.in/go-resty/resty.v2"
+)
+
+var (
+	// ErrTokenIsProcessed ...
+	ErrTokenIsProcessed = fmt.Errorf("your token is currently used to process another request")
 )
 
 // Error is an API error.
@@ -33,6 +38,10 @@ func apiError(res *resty.Response) error {
 	responseErrorModel, ok := responseError.(*errorResponse)
 	if !ok {
 		return errors.New("lokalise: response error model unknown")
+	}
+
+	if responseErrorModel.Error.Code == int(423) {
+		return ErrTokenIsProcessed
 	}
 	return responseErrorModel.Error
 }
