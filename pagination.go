@@ -4,8 +4,8 @@ import (
 	"net/http"
 	"strconv"
 
-	"github.com/go-resty/resty/v2"
 	"github.com/google/go-querystring/query"
+	"gopkg.in/go-resty/resty.v2"
 )
 
 type PageCounter interface {
