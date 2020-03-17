@@ -4,7 +4,7 @@ import (
 	"errors"
 	"fmt"
 
-	"gopkg.in/go-resty/resty.v2"
+	"github.com/go-resty/resty/v2"
 )
 
 var (
