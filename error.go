@@ -7,9 +7,16 @@ import (
 	"github.com/go-resty/resty/v2"
 )
 
+const (
+	httpStatusLocked    = int(423)
+	httpStatusRateLimit = int(429)
+)
+
 var (
 	// ErrTokenIsProcessed ...
 	ErrTokenIsProcessed = fmt.Errorf("your token is currently used to process another request")
+	// ErrRateLimit returns if the request return with status code 429
+	ErrRateLimit = fmt.Errorf("reach rate limit")
 )
 
 // Error is an API error.
@@ -40,8 +47,13 @@ func apiError(res *resty.Response) error {
 		return errors.New("lokalise: response error model unknown")
 	}
 
-	if responseErrorModel.Error.Code == int(423) {
+	switch int(responseErrorModel.Error.Code) {
+	case httpStatusLocked:
 		return ErrTokenIsProcessed
+	case httpStatusRateLimit:
+		return ErrRateLimit
+	default:
 	}
+
 	return responseErrorModel.Error
 }
